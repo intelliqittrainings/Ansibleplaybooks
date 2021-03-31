@@ -1,0 +1,7 @@
+---
+- name: Call child playbooks
+  hosts: all
+  tasks:
+   - name: Install tree using child playbook
+     include: playbook20.yml
+... 
