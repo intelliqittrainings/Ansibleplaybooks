@@ -1,0 +1,19 @@
+---
+- name: Implementing docker compose using Ansible
+  hosts: all
+  tasks:
+   - name: Create a mysql container
+     docker_container:
+      image: mysql:5
+      name: mydb
+      env:
+       MYSQL_ROOT_PASSWORD: intelliqit
+   - name: Create a wordpress container and link with  mysql
+     docker_container:
+      image: wordpress
+      name: mywordpress
+      ports:
+       - 9999:80
+      links:
+       - mydb:mysql
+
